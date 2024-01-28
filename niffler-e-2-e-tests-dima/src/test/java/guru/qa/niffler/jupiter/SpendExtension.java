@@ -1,6 +1,8 @@
 package guru.qa.niffler.jupiter;
 
 import guru.qa.niffler.api.SpendApi;
+import guru.qa.niffler.jupiter.annotation.GenerateCategory;
+import guru.qa.niffler.jupiter.annotation.GenerateSpend;
 import guru.qa.niffler.model.CategoryJson;
 import guru.qa.niffler.model.SpendJson;
 import okhttp3.OkHttpClient;
@@ -10,7 +12,6 @@ import org.junit.platform.commons.support.AnnotationSupport;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Optional;
 

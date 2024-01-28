@@ -26,18 +26,11 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage setName(String name) {
+    public LoginPage login(String name, String password) {
         nameInput.setValue(name);
-        return this;
-    }
-
-    public LoginPage setPassword(String password) {
         passwordInput.setValue(password);
-        return this;
-    }
-
-    public LoginPage pressSubmit() {
         submitButton.click();
         return this;
     }
+
 }

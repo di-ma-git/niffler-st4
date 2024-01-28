@@ -1,22 +1,22 @@
 package guru.qa.niffler.test;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import guru.qa.niffler.jupiter.GenerateCategory;
-import guru.qa.niffler.jupiter.GenerateSpend;
+import guru.qa.niffler.jupiter.annotation.DisabledByIssue;
+import guru.qa.niffler.jupiter.annotation.GenerateCategory;
+import guru.qa.niffler.jupiter.annotation.GenerateSpend;
 import guru.qa.niffler.model.CurrencyValues;
 import guru.qa.niffler.model.SpendJson;
 import guru.qa.niffler.page.LoginPage;
 import guru.qa.niffler.page.MainPage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class SpendingTest {
+//@ExtendWith({BrowserExtension.class})
+public class SpendingTest extends BaseWebTest {
 
     private final MainPage mainPage = new MainPage();
     private final LoginPage loginPage = new LoginPage();
@@ -31,9 +31,13 @@ public class SpendingTest {
 
         loginPage.redirectToLogin()
                 .checkTitle()
-                .setName("duck")
-                .setPassword("12345")
-                .pressSubmit();
+                .login("duck","12345");
+
+    }
+
+    @AfterEach
+    void closeBrowser() {
+
     }
 
     @GenerateCategory(
@@ -46,12 +50,12 @@ public class SpendingTest {
             amount = 72500.00,
             currency = CurrencyValues.RUB
     )
-
-
+    @DisabledByIssue("74")
     @Test
-    void spendingShouldBeDeletedByButtonDeleteSpending(SpendJson spend){
+    void spendingShouldBeDeletedByButtonDeleteSpending(SpendJson spend) {
         mainPage.findSpendingByDescription(spend.description())
                 .pressDeleteButton()
                 .checkRows(0);
     }
+
 }
