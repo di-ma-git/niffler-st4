@@ -58,28 +58,26 @@ public class UsersQueueExtension implements BeforeEachCallback, AfterTestExecuti
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
-        List<Parameter> parameters = Arrays.asList(extensionContext.getRequiredTestMethod().getParameters())
-                .stream()
+        List<Parameter> parameters = new ArrayList<>();
+
+        Arrays.stream(extensionContext.getRequiredTestMethod().getParameters())
                 .filter(p -> p.isAnnotationPresent(User.class))
                 .filter(p -> p.getType().isAssignableFrom(UserJson.class))
-                .collect(Collectors.toList());
+                .forEach(parameters::add);
 
-        List<Method> methods = Arrays.asList(extensionContext.getRequiredTestClass().getDeclaredMethods());
-        for (Method method : methods) {
-            if (method.isAnnotationPresent(BeforeEach.class)) {
-                Parameter[] parametersFromBeforeEach = method.getParameters();
-                for (Parameter parameter : parametersFromBeforeEach) {
-                    if (parameter.getType().isAssignableFrom(UserJson.class) && parameter.getAnnotation(User.class) != null) {
-                        parameters.add(parameter);
-                    }
-                }
-            }
-        }
+        Arrays.stream(extensionContext.getRequiredTestClass().getDeclaredMethods())
+                .filter(m -> m.isAnnotationPresent(BeforeEach.class))
+                .flatMap(m -> Arrays.stream(m.getParameters()))
+                .filter(p -> p.getType().isAssignableFrom(UserJson.class) && p.getAnnotation(User.class) != null)
+                .forEach(parameters::add);
 
         Map<User.UserType, UserJson> testCandidates = new HashMap<>();
 
         for (Parameter parameter : parameters) {
             User annotation = parameter.getAnnotation(User.class);
+            if (testCandidates.get(annotation.value()) != null) {
+                continue;
+            }
             User.UserType value = annotation.value();
             Queue<UserJson> queue = users.get(annotation.value());
             UserJson testCandidate = null;

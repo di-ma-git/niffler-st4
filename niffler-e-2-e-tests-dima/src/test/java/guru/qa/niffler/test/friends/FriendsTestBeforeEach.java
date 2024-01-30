@@ -1,4 +1,4 @@
-package guru.qa.niffler.test;
+package guru.qa.niffler.test.friends;
 
 import com.codeborne.selenide.Selenide;
 import guru.qa.niffler.jupiter.UsersQueueExtension;

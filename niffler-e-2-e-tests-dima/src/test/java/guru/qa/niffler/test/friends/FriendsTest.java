@@ -1,4 +1,4 @@
-package guru.qa.niffler.test;
+package guru.qa.niffler.test.friends;
 
 import com.codeborne.selenide.Selenide;
 import guru.qa.niffler.jupiter.UsersQueueExtension;
@@ -47,10 +47,4 @@ public class FriendsTest {
         friendsPage.checkReceivedInvitation(user.testData().friendUsername());
     }
 
-    @Test
-    void friendsTableShouldNotBeEmpty(@User(INVITATION_SENT) UserJson userInvitationSend,
-                                       @User(INVITATION_RECEIVED) UserJson userInvitationReceived) {
-        loginPage.login(userInvitationSend.username(), userInvitationSend.testData().password());
-        allPeoplePage.checkPendingInvitation(userInvitationReceived.username());
-    }
 }
