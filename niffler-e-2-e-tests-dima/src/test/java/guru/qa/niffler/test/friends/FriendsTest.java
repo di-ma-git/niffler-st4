@@ -24,7 +24,8 @@ public class FriendsTest {
 
     @BeforeEach
     void init() {
-        Selenide.open("http://127.0.0.1:3000/main");
+//        Selenide.open("http://127.0.0.1:3000/main");
+        Selenide.open("http://127.0.0.1:3000");
         loginPage.redirectToLogin()
                 .checkTitle();
     }
