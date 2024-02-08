@@ -7,7 +7,7 @@ import guru.qa.niffler.db.model.CurrencyValues;
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;
 import guru.qa.niffler.db.repository.UserRepository;
-import guru.qa.niffler.jupiter.UserRepositoryExtension;
+import guru.qa.niffler.jupiter.extension.UserRepositoryExtension;
 import guru.qa.niffler.jupiter.annotation.DbUser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +31,11 @@ public class LoginTest extends BaseWebTest {
   @BeforeEach
   void createUser() {
     userAuth = new UserAuthEntity();
+<<<<<<< HEAD
+    userAuth.setUsername("valentin_5");
+=======
     userAuth.setUsername("valentin_6");
+>>>>>>> 766df2b7dbc50208234691faa37344cc2bad0403
     userAuth.setPassword("12345");
     userAuth.setEnabled(true);
     userAuth.setAccountNonExpired(true);
@@ -49,7 +53,11 @@ public class LoginTest extends BaseWebTest {
     userAuth.addAuthorities(authorities);
 
     user = new UserEntity();
+<<<<<<< HEAD
+    user.setUsername("valentin_5");
+=======
     user.setUsername("valentin_6");
+>>>>>>> 766df2b7dbc50208234691faa37344cc2bad0403
     user.setCurrency(CurrencyValues.RUB);
     userRepository.createInAuth(userAuth);
     userRepository.createInUserdata(user);
