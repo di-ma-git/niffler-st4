@@ -119,7 +119,7 @@ public class UserRepositoryJdbc implements UserRepository {
                 ResultSet resultSet = userPS.getResultSet();
                 boolean isProcessed = false;
                 while (resultSet.next()){
-                    if (isProcessed) {
+                    if (!isProcessed) {
                         user = new UserAuthEntity();
                         user.setId(resultSet.getObject(1, UUID.class));
                         user.setUsername(resultSet.getString(2));
@@ -133,6 +133,7 @@ public class UserRepositoryJdbc implements UserRepository {
 
                     if (resultSet.getString(10) != null){
                         AuthorityEntity authority = new AuthorityEntity();
+                        authority.setId(resultSet.getObject(8, UUID.class));
                         authority.setAuthority(Authority.valueOf(resultSet.getString(10)));
                         user.getAuthorities().add(authority);
                     }
@@ -277,9 +278,9 @@ public class UserRepositoryJdbc implements UserRepository {
                 userPs.setObject(1, id);
                 friendsPs.setObject(1, id);
                 invitesPs.setObject(1, id);
-                userPs.executeUpdate();
                 friendsPs.executeUpdate();
                 invitesPs.executeUpdate();
+                userPs.executeUpdate();
 
                 connection.commit();
             } catch (Exception e) {

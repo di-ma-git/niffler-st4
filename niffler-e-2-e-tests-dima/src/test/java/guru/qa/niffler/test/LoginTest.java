@@ -33,7 +33,7 @@ public class LoginTest extends BaseWebTest {
     @BeforeEach
     void createUser() {
         userAuth = new UserAuthEntity();
-        userAuth.setUsername("valentin13");
+        userAuth.setUsername("valentin20");
         userAuth.setPassword("12345");
         userAuth.setEnabled(true);
         userAuth.setAccountNonExpired(true);
@@ -47,7 +47,7 @@ public class LoginTest extends BaseWebTest {
                 }).toList());
 
         user = new UserEntity();
-        user.setUsername("valentin13");
+        user.setUsername("valentin20");
         user.setCurrency(CurrencyValues.RUB);
 
         userRepository.createInAuth(userAuth);
@@ -75,7 +75,7 @@ public class LoginTest extends BaseWebTest {
 
     }
 
-    @DbUser(username = "vallentin17", password = "12345")
+    @DbUser(username = "vallentin21", password = "12345")
     @Test
     void statisticShouldBeVisibleAfterLoginDbUser(UserAuthEntity userAuth) {
         Selenide.open("http://127.0.0.1:3000");

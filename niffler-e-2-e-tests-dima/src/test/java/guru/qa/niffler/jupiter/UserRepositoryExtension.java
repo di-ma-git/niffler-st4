@@ -2,7 +2,6 @@ package guru.qa.niffler.jupiter;
 
 import guru.qa.niffler.db.repository.UserRepository;
 import guru.qa.niffler.db.repository.UserRepositoryJdbc;
-import guru.qa.niffler.db.repository.UserRepositorySJdbc;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 
@@ -14,7 +13,7 @@ public class UserRepositoryExtension implements TestInstancePostProcessor {
         for (Field field : o.getClass().getDeclaredFields()) {
             if (field.getType().isAssignableFrom(UserRepository.class)) {
                 field.setAccessible(true);
-                field.set(o, new UserRepositorySJdbc());
+                field.set(o, new UserRepositoryJdbc());
             }
         }
     }
