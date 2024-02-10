@@ -2,6 +2,7 @@ package guru.qa.niffler.jupiter;
 
 import guru.qa.niffler.db.repository.UserRepository;
 import guru.qa.niffler.db.repository.UserRepositoryJdbc;
+import guru.qa.niffler.db.repository.UserRepositorySJdbc;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 
@@ -13,7 +14,15 @@ public class UserRepositoryExtension implements TestInstancePostProcessor {
         for (Field field : o.getClass().getDeclaredFields()) {
             if (field.getType().isAssignableFrom(UserRepository.class)) {
                 field.setAccessible(true);
-                field.set(o, new UserRepositoryJdbc());
+
+                UserRepository userRepository;
+                String repository = System.getProperty("repository");
+                switch (repository) {
+                    case "jdbc" -> userRepository = new UserRepositoryJdbc();
+                    case "sjdbc" -> userRepository = new UserRepositorySJdbc();
+                    default -> throw new RuntimeException("Choose correct repository argument: 'jdbc' or 'sjdbc'");
+                }
+                field.set(o, repository);
             }
         }
     }
