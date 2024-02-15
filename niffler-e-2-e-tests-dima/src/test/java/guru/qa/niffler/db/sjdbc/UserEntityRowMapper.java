@@ -1,6 +1,6 @@
-package guru.qa.niffler.db.repository.sjdbc;
+package guru.qa.niffler.db.sjdbc;
 
-import guru.qa.niffler.db.model.CurrencyValues;
+import guru.qa.niffler.db.model.enums.CurrencyValues;
 import guru.qa.niffler.db.model.UserEntity;
 import org.springframework.jdbc.core.RowMapper;
 

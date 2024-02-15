@@ -1,16 +1,15 @@
 package guru.qa.niffler.test;
 
 import com.codeborne.selenide.Selenide;
-import guru.qa.niffler.db.repository.UserRepository;
-import guru.qa.niffler.db.model.Authority;
+import guru.qa.niffler.db.repository.user.UserRepository;
+import guru.qa.niffler.db.model.enums.Authority;
 import guru.qa.niffler.db.model.AuthorityEntity;
-import guru.qa.niffler.db.model.CurrencyValues;
+import guru.qa.niffler.db.model.enums.CurrencyValues;
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;
-import guru.qa.niffler.db.repository.UserRepositorySJdbc;
+import guru.qa.niffler.db.repository.user.UserRepositorySJdbc;
 import guru.qa.niffler.jupiter.annotation.DbUser;
 import guru.qa.niffler.page.LoginPage;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

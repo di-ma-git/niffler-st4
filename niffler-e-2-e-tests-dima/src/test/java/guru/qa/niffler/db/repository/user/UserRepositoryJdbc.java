@@ -1,10 +1,10 @@
-package guru.qa.niffler.db.repository;
+package guru.qa.niffler.db.repository.user;
 
 import guru.qa.niffler.db.DataSourceProvider;
 import guru.qa.niffler.db.JdbcUrl;
-import guru.qa.niffler.db.model.Authority;
+import guru.qa.niffler.db.model.enums.Authority;
 import guru.qa.niffler.db.model.AuthorityEntity;
-import guru.qa.niffler.db.model.CurrencyValues;
+import guru.qa.niffler.db.model.enums.CurrencyValues;
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -81,7 +81,6 @@ public class UserRepositoryJdbc implements UserRepository {
     @Override
     public UserEntity createInUserdata(UserEntity user) {
         try (Connection connection = udDs.getConnection()) {
-
             try (PreparedStatement udPs = connection.prepareStatement(
                     "INSERT INTO \"user\" (username, currency) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS)) {
 

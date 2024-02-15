@@ -1,8 +1,8 @@
-package guru.qa.niffler.jupiter;
+package guru.qa.niffler.jupiter.extension;
 
-import guru.qa.niffler.db.repository.UserRepository;
-import guru.qa.niffler.db.repository.UserRepositoryJdbc;
-import guru.qa.niffler.db.repository.UserRepositorySJdbc;
+import guru.qa.niffler.db.repository.user.UserRepository;
+import guru.qa.niffler.db.repository.user.UserRepositoryJdbc;
+import guru.qa.niffler.db.repository.user.UserRepositorySJdbc;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 
