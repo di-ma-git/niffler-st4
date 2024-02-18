@@ -1,30 +1,31 @@
 package guru.qa.niffler.test;
 
 import com.codeborne.selenide.Selenide;
-import guru.qa.niffler.db.repository.UserRepository;
-import guru.qa.niffler.db.model.Authority;
+import guru.qa.niffler.db.repository.user.UserRepository;
+import guru.qa.niffler.db.model.enums.Authority;
 import guru.qa.niffler.db.model.AuthorityEntity;
-import guru.qa.niffler.db.model.CurrencyValues;
+import guru.qa.niffler.db.model.enums.CurrencyValues;
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;
-import guru.qa.niffler.jupiter.UserRepositoryExtension;
+import guru.qa.niffler.db.repository.user.UserRepositorySJdbc;
 import guru.qa.niffler.jupiter.annotation.DbUser;
 import guru.qa.niffler.page.LoginPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Arrays;
 import java.util.Optional;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(UserRepositoryExtension.class)
-public class LoginTest extends BaseWebTest {
+//@ExtendWith(UserRepositoryExtension.class)
+public class MyLoginTest extends BaseWebTest {
 
-    private UserRepository userRepository;
+//    private UserRepository userRepository;
+    private UserRepository userRepository = new UserRepositorySJdbc();
     private UserAuthEntity userAuth;
     private UserEntity user;
     private final LoginPage loginPage = new LoginPage();
@@ -97,5 +98,25 @@ public class LoginTest extends BaseWebTest {
 
         $(".main-content__section-stats").shouldBe(visible);
 
+    }
+
+    @Test
+    void updateUserInUserdata(){
+        user.setCurrency(CurrencyValues.KZT);
+        userRepository.updateInUserdata(user);
+
+        Optional<UserEntity> result = userRepository.findInUserdataById(user.getId());
+
+        assertThat(result).equals(CurrencyValues.KZT);
+    }
+
+    @Test
+    void updateUserInAuth(){
+        userAuth.setUsername("semen123");
+        userRepository.updateInAuth(userAuth);
+
+        Optional<UserAuthEntity> result = userRepository.findInAuthById(userAuth.getId());
+
+        assertThat(result.get().getUsername()).equals(userAuth.getUsername());
     }
 }

@@ -1,4 +1,4 @@
-package guru.qa.niffler.db.repository;
+package guru.qa.niffler.db.repository.user;
 
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;

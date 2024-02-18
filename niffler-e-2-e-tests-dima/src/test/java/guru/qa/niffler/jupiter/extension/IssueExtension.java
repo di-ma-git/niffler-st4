@@ -1,15 +1,12 @@
-package guru.qa.niffler.jupiter;
+package guru.qa.niffler.jupiter.extension;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.p6spy.engine.spy.option.SystemProperties;
-import guru.qa.niffler.api.CategoryApi;
 import guru.qa.niffler.api.GhApi;
 import guru.qa.niffler.jupiter.annotation.DisabledByIssue;
 import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
-import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import retrofit2.Retrofit;
