@@ -1,13 +1,13 @@
-package guru.qa.niffler.jupiter;
+package guru.qa.niffler.jupiter.extension;
 
 import com.github.javafaker.Faker;
-import guru.qa.niffler.db.model.Authority;
+import guru.qa.niffler.db.model.enums.Authority;
 import guru.qa.niffler.db.model.AuthorityEntity;
-import guru.qa.niffler.db.model.CurrencyValues;
+import guru.qa.niffler.db.model.enums.CurrencyValues;
 import guru.qa.niffler.db.model.UserAuthEntity;
 import guru.qa.niffler.db.model.UserEntity;
-import guru.qa.niffler.db.repository.UserRepository;
-import guru.qa.niffler.db.repository.UserRepositoryJdbc;
+import guru.qa.niffler.db.repository.user.UserRepository;
+import guru.qa.niffler.db.repository.user.UserRepositoryJdbc;
 import guru.qa.niffler.jupiter.annotation.DbUser;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

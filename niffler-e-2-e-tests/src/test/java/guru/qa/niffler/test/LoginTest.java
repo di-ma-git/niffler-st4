@@ -36,6 +36,7 @@ public class LoginTest extends BaseWebTest {
     userAuth = new UserAuthEntity();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     userAuth.setUsername("valentin_5");
 =======
     userAuth.setUsername("valentin_6");
@@ -43,6 +44,9 @@ public class LoginTest extends BaseWebTest {
 =======
     userAuth.setUsername("valentin_7");
 >>>>>>> upstream/master
+=======
+    userAuth.setUsername("valentin_5");
+>>>>>>> ed17acb6e376860cb98de8547d2c2d8c726f2da8
     userAuth.setPassword("12345");
     userAuth.setEnabled(true);
     userAuth.setAccountNonExpired(true);
@@ -62,6 +66,7 @@ public class LoginTest extends BaseWebTest {
     user = new UserEntity();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     user.setUsername("valentin_5");
 =======
     user.setUsername("valentin_6");
@@ -69,6 +74,9 @@ public class LoginTest extends BaseWebTest {
 =======
     user.setUsername("valentin_7");
 >>>>>>> upstream/master
+=======
+    user.setUsername("valentin_5");
+>>>>>>> ed17acb6e376860cb98de8547d2c2d8c726f2da8
     user.setCurrency(CurrencyValues.RUB);
     userRepository.createInAuth(userAuth);
     userRepository.createInUserdata(user);
