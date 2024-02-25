@@ -1,4 +1,4 @@
-package guru.qa.niffler.api;
+package guru.qa.niffler.api.category;
 
 import guru.qa.niffler.model.CategoryJson;
 import retrofit2.Call;

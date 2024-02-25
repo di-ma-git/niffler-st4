@@ -1,6 +1,6 @@
 package guru.qa.niffler.jupiter.extension.spend;
 
-import guru.qa.niffler.api.SpendApi;
+import guru.qa.niffler.api.spend.SpendApi;
 import guru.qa.niffler.jupiter.annotation.GenerateCategory;
 import guru.qa.niffler.jupiter.annotation.GenerateSpend;
 import guru.qa.niffler.jupiter.extension.CategoryExtension;

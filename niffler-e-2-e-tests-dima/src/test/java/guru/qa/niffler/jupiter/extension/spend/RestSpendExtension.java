@@ -1,7 +1,7 @@
 package guru.qa.niffler.jupiter.extension.spend;
 
-import guru.qa.niffler.api.CategoryApi;
-import guru.qa.niffler.api.SpendApi;
+import guru.qa.niffler.api.category.CategoryApi;
+import guru.qa.niffler.api.spend.SpendApi;
 import guru.qa.niffler.model.CategoryJson;
 import guru.qa.niffler.model.SpendJson;
 import lombok.SneakyThrows;

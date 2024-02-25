@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class AllPeoplePage {
+public class AllPeoplePage extends BasePage<AllPeoplePage> {
 
     private final SelenideElement goToAllPeoplePage = $("a[href='/people'");
 

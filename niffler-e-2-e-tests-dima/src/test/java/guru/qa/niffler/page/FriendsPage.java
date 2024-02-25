@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class FriendsPage {
+public class FriendsPage extends BasePage<FriendsPage> {
 
     private final SelenideElement goToFriendsPage = $("a[href='/friends']");
 

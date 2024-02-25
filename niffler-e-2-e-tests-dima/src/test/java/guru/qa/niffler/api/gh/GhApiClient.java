@@ -1,9 +1,9 @@
-package guru.qa.niffler.api;
+package guru.qa.niffler.api.gh;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import guru.qa.niffler.api.RestClient;
 import io.qameta.allure.Step;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 
 public class GhApiClient extends RestClient {
@@ -15,7 +15,7 @@ public class GhApiClient extends RestClient {
         this.ghApi = retrofit.create(GhApi.class);
     }
 
-    @Step("Get iisue state by number {issueNumber}")
+    @Step("Get issue state by number {issueNumber}")
     public String getIssueState(String issueNumber) throws IOException {
         JsonNode responseBody = ghApi.issue(
                 "Bearer " + System.getenv("GH_TOKEN"),
